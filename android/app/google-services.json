@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "412551833886",
+    "project_id": "spicycottage-66d69",
+    "storage_bucket": "spicycottage-66d69.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:412551833886:android:6435a08f1865c63124010f",
+        "android_client_info": {
+          "package_name": "com.spicycottage.arslan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "412551833886-snsne67f9jklc0pqhdheggou9q7b6jtp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABZAGfzlHgqkk0utXNsqVrmcXEPUwzhjY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "412551833886-snsne67f9jklc0pqhdheggou9q7b6jtp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

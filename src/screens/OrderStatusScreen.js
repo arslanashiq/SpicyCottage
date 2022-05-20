@@ -117,7 +117,7 @@ const OrderStatusScreen = props => {
               paddingLeft: moderateScale(20),
               borderTopLeftRadius: scale(30),
               borderTopRightRadius: scale(30),
-              backgroundColor: 'orange',
+              backgroundColor: COLORX.gray05,
               paddingVertical: moderateVerticalScale(10),
               // height:moderateScale(20)
             }}>
@@ -142,13 +142,13 @@ const OrderStatusScreen = props => {
                     overflow: 'hidden',
                     paddingHorizontal: moderateScale(20),
                     paddingVertical: moderateVerticalScale(10),
-                    backgroundColor: 'orange',
+                    backgroundColor: 'white',
                   }}>
-                  <Text style={{color: 'black', fontWeight: '800'}}>
+                  <Text style={{color: COLORX.gray04, fontWeight: '800'}}>
                     {item.quantity} x {item.name} ({item.size})
                   </Text>
                   <View style={{position: 'absolute', right: '10%'}}>
-                    <Text style={{color: 'black', fontWeight: '800'}}>
+                    <Text style={{color: COLORX.gray04, fontWeight: '800'}}>
                       {item.price} $
                     </Text>
                   </View>
@@ -157,7 +157,7 @@ const OrderStatusScreen = props => {
             <View
               style={{
                 height: moderateScale(320),
-                backgroundColor: 'orange',
+                backgroundColor: 'white',
               }}></View>
           </ScrollView>
         </View>
