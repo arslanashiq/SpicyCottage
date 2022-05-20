@@ -1,0 +1,62 @@
+[
+  {
+    "_id": "62670d468afbb33224ce0c39",
+    "name": "Mixed Salad",
+    "price": "10",
+    "size":[["Half","10"],["Full","20"]],
+    "image": "https://loveincorporated.blob.core.windows.net/contentimages/gallery/d9e900e4-212e-4c3d-96d5-cb14a023c659-worlds-most-delicious-dishes.jpg",
+    "info": "Lorem Ipsum is simply dummy text of the printing and typesettingindustry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+    "__v": 0,
+    "id": "62670d468afbb33224ce0c39"
+},
+{
+    "_id": "62670d818afbb33224ce0c3a",
+    "name": "Fried Rice",
+    "size":[["Half","10"],["Full","15"]],
+    "price": "10",
+    "image": "https://therecipecritic.com/wp-content/uploads/2019/07/easy_fried_rice-1-500x500.jpg",
+    "info": "Lorem Ipsum is simply dummy text of the printing and typesettingindustry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+    "__v": 0,
+    "id": "62670d818afbb33224ce0c3a"
+},
+{
+    "_id": "62670db88afbb33224ce0c3b",
+    "name": "Chapli Kebob",
+    "size":[["Regular","10"]],
+    "price": "10",
+    "image": "https://c.ndtvimg.com/2021-01/vsafkf5_chapli-kebab_625x300_08_January_21.jpg",
+    "info": "Lorem Ipsum is simply dummy text of the printing and typesettingindustry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+    "__v": 0,
+    "id": "62670db88afbb33224ce0c3b"
+},
+{
+    "_id": "62670dda8afbb33224ce0c3c",
+    "name": "Nehari",
+    "size":[["Half","10"],["Full","15"]],
+    "price": "10",
+    "image": "https://i.ytimg.com/vi/ZFsLqLcAI9Q/hqdefault.jpg",
+    "info": "Lorem Ipsum is simply dummy text of the printing and typesettingindustry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+    "__v": 0,
+    "id": "62670dda8afbb33224ce0c3c"
+},
+{
+    "_id": "626710908afbb33224ce0c3d",
+    "name": "Onion Rings",
+    "price": "5",
+    "size":[["Regular","5"]],
+    "image": "https://www.justataste.com/wp-content/uploads/2013/01/beer-battered-onion-rings.jpg",
+    "info": "Lorem Ipsum is simply dummy text of the printing and typesettingindustry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+    "__v": 0,
+    "id": "626710908afbb33224ce0c3d"
+},
+{
+    "_id": "626710d68afbb33224ce0c3e",
+    "name": "Beef Karhai",
+    "size":[["Half","5"],["Full","10"]],
+    "price": "5",
+    "image": "https://kfoods.com/images1/newrecipeicon/karahi-gosht_5387.jpg",
+    "info": "Lorem Ipsum is simply dummy text of the printing and typesettingindustry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+    "__v": 0,
+    "id": "626710d68afbb33224ce0c3e"
+}
+]

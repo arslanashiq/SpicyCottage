@@ -1,0 +1,38 @@
+[
+  {
+
+    "name": "Mixed Salad",
+    "size":[["Half","10"],["Full","20"]],
+    "price": "3",
+    "image": "https://loveincorporated.blob.core.windows.net/contentimages/gallery/d9e900e4-212e-4c3d-96d5-cb14a023c659-worlds-most-delicious-dishes.jpg",
+    "info": "Lorem Ipsum is simply dummy text of the printing and typesettingindustry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
+
+},
+{
+
+    "name": "Gajrela",
+    "size":[["small","10"],["medium","15"],["large","20"]],
+    "price": "10",
+    "image": "http://cdn.cnn.com/cnnnext/dam/assets/181019131728-14-pakistan-food-gajrela.jpg",
+    "info": "Lorem Ipsum is simply dummy text of the printing and typesettingindustry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
+
+},
+{
+  
+    "name": "Grilled Sandwich",
+    "size":[["Regular","6"],["Large","15"]],
+    "price": "6",
+    "image": "https://cdn.cnn.com/cnnnext/dam/assets/140430115517-06-comfort-foods.jpg",
+    "info": "Lorem Ipsum is simply dummy text of the printing and typesettingindustry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
+
+},
+{
+
+    "name": "Mixed Salad",
+    "size":[["small","10"],["medium","15"],["large","20"]],
+    "price": "3",
+    "image": "https://loveincorporated.blob.core.windows.net/contentimages/gallery/d9e900e4-212e-4c3d-96d5-cb14a023c659-worlds-most-delicious-dishes.jpg",
+    "info": "Lorem Ipsum is simply dummy text of the printing and typesettingindustry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
+
+}
+]

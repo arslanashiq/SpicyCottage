@@ -1,0 +1,37 @@
+[
+    {
+        "_id": "62618a030dd64a146072283a",
+        "name": "Starters",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEh0Lwk8-6jCNRXG-DfU9RI-2lrfB2MSCKhA&usqp=CAU",
+        "__v": 0,
+        "id": "62618a030dd64a146072283a"
+    },
+    {
+        "_id": "62618a200dd64a146072283b",
+        "name": "Poories",
+        "image": "https://www.bawarchi.com/uploads/oh5p1qgeibbga.jpg",
+        "__v": 0,
+        "id": "62618a200dd64a146072283b"
+    },
+    {
+        "_id": "62618a450dd64a146072283c",
+        "name": "BBQ",
+        "image": "https://i.dawn.com/large/2017/08/599a579337c66.png",
+        "__v": 0,
+        "id": "62618a450dd64a146072283c"
+    },
+    {
+        "_id": "62618a600dd64a146072283d",
+        "name": "Karhai",
+        "image": "https://www.masala.tv/wp-content/uploads/2019/12/Masala-karhai-Mehboob-Kitchen.jpg",
+        "__v": 0,
+        "id": "62618a600dd64a146072283d"
+    },
+    {
+        "_id": "62618a710dd64a146072283e",
+        "name": "Biryani",
+        "image": "https://hamariweb.com/recipes/images/recipeimages/3464.jpg",
+        "__v": 0,
+        "id": "62618a710dd64a146072283e"
+    }
+]

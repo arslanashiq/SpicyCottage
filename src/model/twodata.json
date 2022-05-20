@@ -1,0 +1,26 @@
+[
+    {
+      "id": 1,
+      "busineesname": "Business Name",
+      "email": "abc@gmail.com",
+      "profile_pic":
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR04ZndPl3TMJ4GMG8UeiY8XGh8ifpnPGHTbw&usqp=CAU",
+      "name":"name",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRr6PF3jxAYze1o4VmahsKgROGIRZt90iqyVw&usqp=CAU",
+      "info":"Lorem Ipsum is simply dummy text of the printing and typesettingindustry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
+  
+    },
+    {
+      "id": 2,
+      "busineesname": "Business Name2",
+      "email": "abc@gmail.com",
+      "profile_pic":
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR04ZndPl3TMJ4GMG8UeiY8XGh8ifpnPGHTbw&usqp=CAU",
+      "name":"name",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRr6PF3jxAYze1o4VmahsKgROGIRZt90iqyVw&usqp=CAU",
+      "info":"Lorem Ipsum is simply dummy text of the printing and typesettingindustry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
+      
+    }
+    
+    
+  ]
