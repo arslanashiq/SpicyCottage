@@ -80,7 +80,7 @@ class SplashScreen extends Component {
       if (parsed == null) {
         this.props.navigation.replace(navigationstring.ONBOARDING);
       } else {
-        this.props.navigation.navigate(navigationstring.LOGIN);
+        this.props.navigation.replace(navigationstring.LOGIN);
       }
     });
   };

@@ -48,14 +48,16 @@ const LoginScreen = props => {
   };
 
   const VerifyUser = () => {
+    
     if (!IsLoading) {
       updateState({IsLoading: true});
       const url = URL.My_Database_Url + 'verifyuser';
 
       console.log('Into api');
-
-      if (Email == '' || Password == '') {
+      
+      if (Email=="" || Password == '') {
         updateState({IsLoading: false});
+        alert('Error');
       } else {
         const UploadDataCredentials = {
           email: Email,
@@ -73,7 +75,7 @@ const LoginScreen = props => {
           .then(async responseText => {
             let responseData = JSON.parse(responseText);
             if (responseData.status == 200) {
-              console.log(responseData.user)
+              console.log(responseData.user);
               SaveUser(responseData.user);
 
               props.navigation.replace(navigationstring.BOTTOMTABHOME);
@@ -84,6 +86,8 @@ const LoginScreen = props => {
             }
           })
           .catch(error => {
+            updateState({IsLoading: false});
+            alert('Request Error Check Your Internet');
             console.log(error, 'error from APi Check User');
           });
       }
@@ -163,10 +167,14 @@ const LoginScreen = props => {
             myText="Login"
             // mycss={{borderRadius: 10}}
             mymulticolor={
-              IsLoading ? ['#d4b561', '#d4b561', '#d4b561'] : ['orange', 'orange', 'orange']
+              IsLoading
+                ? ['#d4b561', '#d4b561', '#d4b561']
+                : ['orange', 'orange', 'orange']
             }
             myonpress={() => {
               VerifyUser();
+             
+              
             }}
           />
         </View>

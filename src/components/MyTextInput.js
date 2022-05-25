@@ -26,6 +26,7 @@ const MyTextInput = ({
       </View>
       <View style={{flex: 1}}>
         <TextInput
+        
           style={{
             borderWidth:1,
             borderColor:'lightgrey',
@@ -34,7 +35,6 @@ const MyTextInput = ({
             paddingVertical: moderateVerticalScale(8),
             borderRadius: 10,
           }}
-          
           onChangeText={myonchangetext}
           {...props}
         />

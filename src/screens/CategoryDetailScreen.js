@@ -63,7 +63,7 @@ const CategoryDetailScreen = props => {
   };
 
   useEffect(() => {
-    // GetDataFromApi();
+    GetDataFromApi();
   }, []);
 
   const ITEMRENDERER = (item, index) => {
@@ -159,18 +159,19 @@ const CategoryDetailScreen = props => {
           Is_right_icon={false}
         />
       </View>
-      {mydata ? (
+      {Data ? (
         <FlatList
           style={{paddingBottom: moderateVerticalScale(150)}}
           bounces={false}
           showsVerticalScrollIndicator={false}
           showsHorizontalScrollIndicator={false}
           numColumns={2}
-          data={mydata}
+          data={Data}
           renderItem={ITEMRENDERER}
         />
       ) : (
-        <View></View>
+        <View style={{flex:1,justifyContent:"center",alignItems:"center"}}><Text style={{fontSize:scale(24),fontWeight:"600",color:"black"}}>
+          No Data</Text></View>
       )}
     </View>
   );

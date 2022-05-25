@@ -7,6 +7,8 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
+import MyTextInputForPassword from '../components/MyTextInputForPassword';
+
 import {
   scale,
   verticalScale,
@@ -19,8 +21,8 @@ import MyTouchableOpacity from '../components/MyTouchableOpacity';
 import navigationstring from '../constants/navigationstring';
 import KeyboardSpacer from 'react-native-keyboard-spacer';
 import {font} from '../constants/font';
-import { COLORX } from '../constants/AppConstants';
-import { URL } from '../constants/URLS';
+import {COLORX} from '../constants/AppConstants';
+import {URL} from '../constants/URLS';
 const Signup = props => {
   const [state, setstate] = useState({
     iSloding: true,
@@ -28,21 +30,20 @@ const Signup = props => {
     LastName: '',
     Email: '',
     Password: '',
-
+    TogglePassView: true,
   });
-  const {iSloding, FirstName, LastName, Email, Password} = state;
+  const {iSloding, FirstName, TogglePassView, LastName, Email, Password} =
+    state;
 
   const updateState = data => setstate(state => ({...state, ...data}));
 
   const UploadData = () => {
-    const url = URL.My_Database_Url+'users';
-    if(FirstName==""||LastName==""||Email==""||Password=="")
-      {
-        console.log("return")
-        return;
-      }
-    else{
-      console.log("Into api")
+    const url = URL.My_Database_Url + 'users';
+    if (FirstName == '' || LastName == '' || Email == '' || Password == '') {
+      console.log('return');
+      return;
+    } else {
+      console.log('Into api');
       const UploadDataCredentials = {
         first_name: FirstName,
         last_name: LastName,
@@ -50,7 +51,7 @@ const Signup = props => {
         passwordHash: Password,
         isAdmin: false,
       };
-      console.log(JSON.stringify(UploadDataCredentials))
+      console.log(JSON.stringify(UploadDataCredentials));
       fetch(url, {
         method: 'POST',
         headers: {
@@ -66,13 +67,12 @@ const Signup = props => {
           if (responseData.status == 200) {
             console.log('Data Posted Successfully');
             updateState({
-              FirstName:"",
-              LastName:"",
-              Email:"",
-              Password:"",
-              
-            })
-            props.navigation.navigate(navigationstring.LOGIN)
+              FirstName: '',
+              LastName: '',
+              Email: '',
+              Password: '',
+            });
+            props.navigation.navigate(navigationstring.LOGIN);
           } else {
             console.log('fail');
           }
@@ -128,6 +128,7 @@ const Signup = props => {
               mylabel="First Name"
               placeholder="first name"
               autoFocus={false}
+              value={FirstName}
               backgroundColor="#eeee"
               color="black"
               placeholderTextColor="silver"
@@ -145,6 +146,7 @@ const Signup = props => {
             }}>
             <MyTextInput
               mylabel="Last Name"
+              value={LastName}
               placeholder="last name"
               autoFocus={false}
               backgroundColor="#eeee"
@@ -166,6 +168,7 @@ const Signup = props => {
               placeholder="example@gmail.com"
               autoFocus={false}
               backgroundColor="#eeee"
+              value={Email}
               color="black"
               placeholderTextColor="silver"
               myonchangetext={e => updateState({Email: e})}
@@ -179,30 +182,43 @@ const Signup = props => {
               marginVertical: moderateVerticalScale(10),
               flex: 1,
             }}>
-            <MyTextInput
-              mylabel="Password"
-              placeholder="*******"
+            <MyTextInputForPassword
+              mylabel="Enter Password"
+              // img={ShowPass}
+              myicon2={TogglePassView ? imgx.hide_pass : imgx.show_pass}
+              placeholder="••••••••"
               autoFocus={false}
-              backgroundColor="#eeee"
+              value={Password}
+              backgroundColor="white"
               color="black"
               placeholderTextColor="silver"
+              iconpress={() => {
+                updateState({TogglePassView: !TogglePassView});
+              }}
               myonchangetext={e => updateState({Password: e})}
-              secureTextEntry={true}
+              secureTextEntry={TogglePassView}
             />
           </View>
         </View>
 
-        <View style={{flex: 1,marginVertical:moderateVerticalScale(10)}}>
+        <View style={{flex: 1, marginVertical: moderateVerticalScale(10)}}>
           <MyTouchableOpacity
             myText="Signup"
             // mycss={{borderRadius: 10}}
-            mymulticolor={[
-              "orange",
-              "orange",
-              "orange"
-            ]}
+            mymulticolor={['orange', 'orange', 'orange']}
             myonpress={() => {
-              UploadData();
+              // UploadData();
+              const emailRegex = /^[\w-\.]+@([a-z]+\.)+[a-z]{2,4}$/;
+              const nameRegex = /^[a-zA-Z]{3,10}$/;
+              if (
+                nameRegex.test(FirstName) &&
+                nameRegex.test(LastName) &&
+                emailRegex.test(Email)
+              ) {
+                UploadData();
+              } else {
+                alert('Please Provide Valid Information.');
+              }
             }}
           />
         </View>

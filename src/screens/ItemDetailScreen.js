@@ -25,7 +25,9 @@ const ItemDetailScreen = props => {
     quantity: 1,
     item: [],
     itemsize: [],
+    ingredient: [],
     itemlength: [],
+    ShowIngredient: false,
     price: 0,
     instruction: '',
     selected_item_type: [],
@@ -35,10 +37,12 @@ const ItemDetailScreen = props => {
     quantity,
     cartlist,
     instruction,
+    ShowIngredient,
     selected_item_type,
     price,
     itemlength,
     itemsize,
+    ingredient,
     item,
   } = state;
   const updateState = data => setstate(state => ({...state, ...data}));
@@ -46,6 +50,7 @@ const ItemDetailScreen = props => {
     updateState({
       item: props.route.params,
       itemsize: item.size,
+      ingredient: item.list,
     });
     updateState({itemlength: []});
     itemsize
@@ -259,10 +264,64 @@ const ItemDetailScreen = props => {
                 }}
                 placeholder="Enter Instructions"
                 multiline={true}
+                value={instruction}
                 numberOfLines={3}
                 placeholderTextColor={COLORX.gray04}
                 onChangeText={e => updateState({instruction: e})}
               />
+            </View>
+            <View>
+              <TouchableOpacity
+                style={{top: -10}}
+                onPress={() => updateState({ShowIngredient: !ShowIngredient})}>
+                <Text
+                  style={{
+                    paddingTop: moderateVerticalScale(20),
+                    color: 'black',
+                    fontSize: scale(16),
+                    fontWeight: '600',
+                  }}>
+                  {ShowIngredient ? 'Hide ' : 'Show '}Ingredients
+                </Text>
+              </TouchableOpacity>
+              <View style={{height: ShowIngredient ? 'auto' : 0}}>
+                {item.list ? (
+                  item.list.map((singleitem, index) => (
+                    <TouchableOpacity
+                      key={index}
+                      style={{
+                        top: '-5%',
+                        paddingHorizontal: moderateScale(20),
+                      }}
+                      onPress={() =>
+                        updateState({
+                          instruction: instruction + ' ' + singleitem + ',',
+                        })
+                      }>
+                      <Text
+                        style={{
+                          color: COLORX.gray04,
+                          fontSize: scale(14),
+                          fontWeight: '500',
+                        }}>
+                        {singleitem}
+                      </Text>
+                    </TouchableOpacity>
+                  ))
+                ) : (
+                  <View>
+                    <Text
+                      style={{
+                        paddingHorizontal: moderateScale(20),
+                        color: 'red',
+                        fontWeight:"600",
+                        fontSize: scale(15),
+                      }}>
+                      No Ingredient Data available
+                    </Text>
+                  </View>
+                )}
+              </View>
             </View>
             <View style={{top: -10}}>
               <Text

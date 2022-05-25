@@ -33,7 +33,7 @@ const CheckoutScreen = props => {
     TotalPrice: 0,
     longitude: '',
     latitude: '',
-    user_id:''
+    user_id: '',
   });
   const {
     TogglePersonalinfo,
@@ -49,13 +49,11 @@ const CheckoutScreen = props => {
     latitude,
   } = state;
   const updateState = data => setstate(state => ({...state, ...data}));
-  const GetUser = async  ()=> {
+  const GetUser = async () => {
     try {
       await AsyncStorage.getItem('@UserData').then(res => {
-        let userdata=JSON.parse(res)
-        updateState({user_id:userdata.id})
-        
-        
+        let userdata = JSON.parse(res);
+        updateState({user_id: userdata.id});
       });
     } catch (error) {
       console.log('error', error.message);
@@ -63,36 +61,31 @@ const CheckoutScreen = props => {
   };
   const PlaceOrder = () => {
     GetUser();
-    UploadOrder()
-
+    UploadOrder();
   };
   const removeData = async () => {
     await AsyncStorage.removeItem('@StoreData').then(() => {
-      updateState({
-        
-      });
+      updateState({});
     });
   };
   const UploadOrder = () => {
-    const url = URL.My_Database_Url + 'orders';;
-    if(Name==""||Phone==""||Address=="")
-      {
-        // console.log("Name",Name,"\nPhone",Phone,"\nAddress",Address)
-        // console.log("return")
-        alert("Please Provide the Information")
-        return;
-      }
-    else{
+    const url = URL.My_Database_Url + 'orders';
+    if (Name == '' || Phone == '' || Address == '') {
+      // console.log("Name",Name,"\nPhone",Phone,"\nAddress",Address)
+      // console.log("return")
+      alert('Please Provide the Information');
+      return;
+    } else {
       var date = new Date().getDate();
       const UploadDataCredentials = {
         user_id: user_id,
-        user_detail: [Name,Phone,Address],
+        user_detail: [Name, Phone, Address],
         order_detail: Data,
         total_price: TotalPrice,
         order_time: date,
-        status: "Pending",
+        status: 'Pending',
       };
-      console.log(JSON.stringify(UploadDataCredentials))
+      console.log(JSON.stringify(UploadDataCredentials));
       fetch(url, {
         method: 'POST',
         headers: {
@@ -107,8 +100,8 @@ const CheckoutScreen = props => {
           console.log('responseData', responseData);
           if (responseData.status == 200) {
             removeData();
-            
-            props.navigation.replace(navigationstring.BOTTOMTABHOME)
+
+            props.navigation.replace(navigationstring.BOTTOMTABHOME);
           } else {
             console.log('fail');
           }
@@ -372,11 +365,11 @@ const CheckoutScreen = props => {
               <MyTextInput
                 mylabel="Phone #"
                 placeholder="+92"
+                keyboardType="phone-pad"
                 autoFocus={false}
                 backgroundColor="#eeee"
                 color="black"
                 placeholderTextColor="silver"
-                keyboardType='number-pad'
                 myonchangetext={e => updateState({Phone: e})}
               />
               <MyTextInput
@@ -552,7 +545,18 @@ const CheckoutScreen = props => {
 
         <TouchableOpacity
           onPress={() => {
-            PlaceOrder();
+            const nameRegex = /^[a-zA-Z]{3,10}$/;
+            const numberRegexwithoutcode = /^[0-9]{11,11}$/;
+            const numberRegexwithcode = /^(\+44)+[0-9]{10,10}$/;
+            if (
+              nameRegex.test(Name) &&
+              (numberRegexwithcode.test(Phone) ||
+                numberRegexwithoutcode.test(Phone))
+            ) {
+              // PlaceOrder();
+            } else {
+              alert('Please Provide Valid Information.');
+            }
           }}
           style={{
             backgroundColor: 'orange',
