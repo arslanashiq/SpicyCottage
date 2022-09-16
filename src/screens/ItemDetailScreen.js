@@ -160,7 +160,7 @@ const ItemDetailScreen = props => {
                   fontWeight: '600',
                   color: 'black',
                 }}>
-                $ {price}
+                Rs {price}
               </Text>
             </View>
             {itemsize ? (
@@ -236,7 +236,7 @@ const ItemDetailScreen = props => {
                           fontWeight: '600',
                           color: 'black',
                         }}>
-                        ${value[1]}
+                        Rs {value[1]}
                       </Text>
                     </TouchableOpacity>
                   ))}

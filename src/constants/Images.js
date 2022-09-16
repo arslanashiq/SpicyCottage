@@ -6,6 +6,7 @@ export const imgx={
     step1: require('../assets/images/step1.png'),
     step2: require('../assets/images/step2.png'),
     step3: require('../assets/images/step3.png'),
+    whatsapp: require('../assets/images/whatsapp.png'),
     onboard_done: require('../assets/images/done.png'),
     report_a_problem: require('../assets/images/warning.png'),
     share_app: require('../assets/images/share.png'),

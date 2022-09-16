@@ -14,21 +14,28 @@ const SettingTouchable = ({mytext, myicon, myonpress, myicon2}) => {
       style={{
         flex: 1,
         paddingHorizontal: moderateScale(10),
-        paddingVertical: moderateVerticalScale(12),
+        paddingVertical: moderateVerticalScale(5),
       }}>
       <TouchableOpacity onPress={myonpress}>
-        <View style={{flex: 1, flexDirection: 'row'}}>
+        <View
+          style={{
+            flex: 1,
+            paddingVertical: moderateVerticalScale(8),
+            flexDirection: 'row',
+            // backgroundColor:'red',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
           <View
             style={{
               paddingHorizontal: moderateScale(10),
               justifyContent: 'flex-start',
             }}>
-            <Image source={myicon} />
+            <Image style={{height: 15, width: 15}} source={myicon} />
           </View>
           <View style={{flex: 1}}>
             <Text
               style={{
-                
                 color: 'black',
                 fontSize: scale(font.text_font),
                 fontWeight: '400',
@@ -37,7 +44,7 @@ const SettingTouchable = ({mytext, myicon, myonpress, myicon2}) => {
             </Text>
           </View>
           <View style={{justifyContent: 'flex-end'}}>
-            <Image source={myicon2} />
+            <Image style={{height: 15, width: 15}} source={myicon2} />
           </View>
         </View>
       </TouchableOpacity>

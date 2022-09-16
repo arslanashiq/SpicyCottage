@@ -100,7 +100,6 @@ const CheckoutScreen = props => {
           console.log('responseData', responseData);
           if (responseData.status == 200) {
             removeData();
-
             props.navigation.replace(navigationstring.BOTTOMTABHOME);
           } else {
             console.log('fail');
@@ -452,7 +451,7 @@ const CheckoutScreen = props => {
                   {item.quantity} x {item.name} ({item.size})
                 </Text>
                 <Text style={{color: COLORX.gray05}}>
-                  $ {props.route.params.item_total[index]}
+                  Rs {props.route.params.item_total[index]}
                 </Text>
               </View>
             ))}
@@ -475,7 +474,7 @@ const CheckoutScreen = props => {
                   SubTotal
                 </Text>
                 <Text style={{color: COLORX.gray05}}>
-                  $ {props.route.params.Total}
+                  Rs {props.route.params.Total}
                 </Text>
               </View>
 
@@ -489,7 +488,7 @@ const CheckoutScreen = props => {
                   Discount
                 </Text>
                 <Text style={{color: COLORX.gray05}}>
-                  - $ {parseFloat(props.route.params.Total / 10)}
+                  - Rs {parseFloat(props.route.params.Total / 10)}
                 </Text>
               </View>
 
@@ -503,7 +502,7 @@ const CheckoutScreen = props => {
                   Delivery Free
                 </Text>
                 <Text style={{color: COLORX.gray05}}>
-                  $ {parseFloat(props.route.params.Total / 20)}
+                  Rs {parseFloat(props.route.params.Total / 20)}
                 </Text>
               </View>
             </View>
@@ -539,21 +538,24 @@ const CheckoutScreen = props => {
             Total Charges
           </Text>
           <Text style={{color: 'black', fontWeight: '800'}}>
-            $ {TotalPrice}
+            Rs {TotalPrice}
           </Text>
         </View>
 
         <TouchableOpacity
           onPress={() => {
+            console.log("I am in")
+
             const nameRegex = /^[a-zA-Z]{3,10}$/;
             const numberRegexwithoutcode = /^[0-9]{11,11}$/;
-            const numberRegexwithcode = /^(\+44)+[0-9]{10,10}$/;
+            const numberRegexwithcode = /^(\+92)+[0-9]{10,10}$/;
             if (
               nameRegex.test(Name) &&
               (numberRegexwithcode.test(Phone) ||
                 numberRegexwithoutcode.test(Phone))
             ) {
-              // PlaceOrder();
+              console.log("I am in")
+              PlaceOrder();
             } else {
               alert('Please Provide Valid Information.');
             }

@@ -406,7 +406,7 @@ const AddToCart = props => {
                     fontSize: scale(16),
                     fontWeight: '800',
                   }}>
-                  $ {sum(index, item.price * item.quantity)}
+                  Rs {sum(index, item.price * item.quantity)}
                 </Text>
               </View>
             ))
@@ -455,7 +455,7 @@ const AddToCart = props => {
                     fontSize: scale(16),
                     fontWeight: '800',
                   }}>
-                  $ {Total}
+                  Rs {Total}
                 </Text>
               </View>
               <View
@@ -491,7 +491,7 @@ const AddToCart = props => {
                       fontSize: scale(16),
                       fontWeight: '800',
                     }}>
-                    $ {parseFloat(Total / 10)}
+                    Rs {parseFloat(Total / 10)}
                   </Text>
                 </View>
               </View>
@@ -520,7 +520,7 @@ const AddToCart = props => {
                     fontSize: scale(13),
                     fontWeight: '500',
                   }}>
-                  $ {parseInt(Total / 20)}
+                  Rs {parseInt(Total / 20)}
                 </Text>
               </View>
             </View>

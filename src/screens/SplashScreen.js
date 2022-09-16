@@ -94,7 +94,7 @@ class SplashScreen extends Component {
         />
   
         <View style={styles.contentContainer}>
-          <View style={{position: 'absolute', zIndex: 1}}>
+          <View style={{paddingTop:200,position: 'absolute', zIndex: 1}}>
             <Animated.Image
               style={[styles.image, {opacity: this.state.fadeAnim}]}
               source={imgx.Logo}
@@ -118,8 +118,8 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   image: {
-    width: 350,
-    height: 350,
+    width: 200,
+    height: 200,
     resizeMode: 'contain',
     top: "50%",
   },

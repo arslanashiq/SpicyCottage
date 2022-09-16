@@ -127,7 +127,7 @@ const CategoryDetailScreen = props => {
                   fontWeight: '800',
                   color: 'black',
                 }}>
-                $ {item.item.price}
+                Rs {item.item.price}
               </Text>
             </View>
           </View>

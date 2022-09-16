@@ -25,19 +25,20 @@ import {COLORX} from '../constants/AppConstants';
 import {URL} from '../constants/URLS';
 const Signup = props => {
   const [state, setstate] = useState({
-    iSloding: true,
+    IsLoading: false,
     FirstName: '',
     LastName: '',
     Email: '',
     Password: '',
     TogglePassView: true,
   });
-  const {iSloding, FirstName, TogglePassView, LastName, Email, Password} =
+  const {IsLoading, FirstName, TogglePassView, LastName, Email, Password} =
     state;
 
   const updateState = data => setstate(state => ({...state, ...data}));
 
   const UploadData = () => {
+    updateState({IsLoading: true});
     const url = URL.My_Database_Url + 'users';
     if (FirstName == '' || LastName == '' || Email == '' || Password == '') {
       console.log('return');
@@ -74,10 +75,13 @@ const Signup = props => {
             });
             props.navigation.navigate(navigationstring.LOGIN);
           } else {
+            updateState({IsLoading: false});
+
             console.log('fail');
           }
         })
         .catch(error => {
+          updateState({IsLoading: false});
           console.log(error, 'error from APi UploadData1212');
         });
     }
@@ -203,9 +207,15 @@ const Signup = props => {
 
         <View style={{flex: 1, marginVertical: moderateVerticalScale(10)}}>
           <MyTouchableOpacity
+            disabled={IsLoading}
             myText="Signup"
             // mycss={{borderRadius: 10}}
-            mymulticolor={['orange', 'orange', 'orange']}
+            mymulticolor={
+              IsLoading
+                ? ['#e3e3e3', '#e3e3e3', '#e3e3e3']
+                : ['orange', 'orange', 'orange']
+            }
+            loader={IsLoading}
             myonpress={() => {
               // UploadData();
               const emailRegex = /^[\w-\.]+@([a-z]+\.)+[a-z]{2,4}$/;
@@ -213,7 +223,8 @@ const Signup = props => {
               if (
                 nameRegex.test(FirstName) &&
                 nameRegex.test(LastName) &&
-                emailRegex.test(Email)
+                emailRegex.test(Email) &&
+                Password.length > 7
               ) {
                 UploadData();
               } else {

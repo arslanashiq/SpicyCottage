@@ -1,5 +1,6 @@
 import {View, Text, Image, TouchableOpacity} from 'react-native';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {moderateScale, moderateVerticalScale} from 'react-native-size-matters';
 // import NavigationStrings from '../constants/NavigationStrings';
@@ -18,6 +19,34 @@ const Header = ({
   right_style,
   right_icon,
 }) => {
+  const [state, setstate] = useState({
+    Data: [],
+  });
+  const {Data} = state;
+  const updateState = data => setstate(state => ({...state, ...data}));
+
+  const CartToken = async () => {
+    try {
+      const myresponse = await AsyncStorage.getItem('@StoreData').then(
+        value => {
+          updateState({
+            Data: JSON.parse(value),
+          });
+
+          console.log(Data,"Data in header")
+        },
+      );
+    } catch (error) {
+      console.log('Get store data error ', error.message);
+    }
+    console.log("myresponse",myresponse)
+  };
+  useEffect(() => {
+    CartToken();
+
+    
+  }, []);
+
   return (
     <View
       style={{

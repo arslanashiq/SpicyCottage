@@ -5,6 +5,7 @@ import {
   Image,
   TouchableOpacity,
   FlatList,
+  ActivityIndicator,
 } from 'react-native';
 import React, {useState, useLayoutEffect} from 'react';
 import {
@@ -38,7 +39,7 @@ const HomeScreen = props => {
     props.navigation.addListener('focus', e => {
       GetData();
     });
-    GetData();
+    // GetData();
   }, []);
   //renderitem of flat list
   const GetData = () => {
@@ -53,14 +54,14 @@ const HomeScreen = props => {
           let responseData = JSON.parse(responseText);
           if (responseData.status == 200) {
             console.log('Data Found Successfully');
-            responseData.recomendedList.map(item => {
-              if (item in temp) {
-              } else {
-                temp.push(item);
-                // console.log(item)
-              }
-            });
-            updateState({RecomendedData: temp});
+            // responseData.recomendedList.map(item => {
+            //   if (item in temp) {
+            //   } else {
+            //     temp.push(item);
+            //     // console.log(item)
+            //   }
+            // });
+            updateState({RecomendedData: responseData.recomendedList});
           } else {
             console.log('fail');
           }
@@ -79,14 +80,14 @@ const HomeScreen = props => {
           let responseData = JSON.parse(responseText);
           if (responseData.status == 200) {
             console.log('Data Found Successfully');
-            responseData.recentList.map(item => {
-              if (item in temp2) {
-              } else {
-                temp2.push(item);
-                // console.log(item)
-              }
-            });
-            updateState({RecentData: temp2});
+            // responseData.recentList.map(item => {
+            //   if (item in temp2) {
+            //   } else {
+            //     temp2.push(item);
+            //     // console.log(item)
+            //   }
+            // });
+            updateState({RecentData: responseData.recentList});
           } else {
             console.log('fail');
           }
@@ -95,7 +96,6 @@ const HomeScreen = props => {
           console.log(error, 'error from APi UploadData1212');
         });
       updateState({apihit: true});
-
     }
     // hit api
   };
@@ -154,7 +154,7 @@ const HomeScreen = props => {
                 fontWeight: '600',
                 color: 'black',
               }}>
-              $ {item.price}
+              Rs {item.price}
             </Text>
           </View>
         </View>
@@ -280,7 +280,7 @@ const HomeScreen = props => {
                   fontWeight: '800',
                   color: 'black',
                 }}>
-                $ {item.item.price}
+                Rs {item.item.price}
               </Text>
             </View>
           </View>
@@ -302,47 +302,60 @@ const HomeScreen = props => {
   );
 
   return (
-    <View style={{backgroundColor: COLORX.gray00}}>
-      <View
-        style={{
-          backgroundColor: 'orange',
-          paddingHorizontal: moderateScale(20),
-          paddingVertical: moderateVerticalScale(5),
-          borderBottomLeftRadius: scale(10),
-          borderBottomRightRadius: scale(10),
-        }}>
-        <Header
-          Is_left_icon={false}
-          Is_header_center={false}
-          header_style={[Font.font24, {fontWeight: '700'}]}
-          header_text="Home Screen"
-          Is_right_icon={true}
-          right_onpress={() =>
-            props.navigation.navigate(NavigationStrings.ADDTOCART)
-          }
-          right_style={{height: moderateScale(20), width: moderateScale(20)}}
-          right_icon={imgx.add_to_cart}
+    <>
+      {RecomendedData.length == 0 && RecentData.length == 0 ? (
+        <ActivityIndicator
+          size="large"
+          color="orange"
+          style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}
         />
-      </View>
+      ) : (
+        <View style={{backgroundColor: COLORX.gray00}}>
+          <View
+            style={{
+              backgroundColor: 'orange',
+              paddingHorizontal: moderateScale(20),
+              paddingVertical: moderateVerticalScale(5),
+              borderBottomLeftRadius: scale(10),
+              borderBottomRightRadius: scale(10),
+            }}>
+            <Header
+              Is_left_icon={false}
+              Is_header_center={false}
+              header_style={[Font.font24, {fontWeight: '700'}]}
+              header_text="Home Screen"
+              Is_right_icon={true}
+              right_onpress={() =>
+                props.navigation.navigate(NavigationStrings.ADDTOCART)
+              }
+              right_style={{
+                height: moderateScale(20),
+                width: moderateScale(20),
+              }}
+              right_icon={imgx.add_to_cart}
+            />
+          </View>
 
-      <View
-        style={{
-          marginHorizontal: moderateScale(20),
-          // marginVertical: moderateVerticalScale(30),
-          marginBottom: moderateVerticalScale(8),
-          flexDirection: 'row',
-        }}></View>
-      {/* {GetData()} */}
+          <View
+            style={{
+              marginHorizontal: moderateScale(20),
+              // marginVertical: moderateVerticalScale(30),
+              marginBottom: moderateVerticalScale(8),
+              flexDirection: 'row',
+            }}></View>
+          {/* {GetData()} */}
 
-      <FlatList
-        bounces={false}
-        showsVerticalScrollIndicator={false}
-        showsHorizontalScrollIndicator={false}
-        data={onlyone}
-        renderItem={MyRecomendedList}
-        ListFooterComponent={MyFooterComponent}
-      />
-    </View>
+          <FlatList
+            bounces={false}
+            showsVerticalScrollIndicator={false}
+            showsHorizontalScrollIndicator={false}
+            data={onlyone}
+            renderItem={MyRecomendedList}
+            ListFooterComponent={MyFooterComponent}
+          />
+        </View>
+      )}
+    </>
   );
 };
 

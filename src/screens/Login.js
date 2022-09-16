@@ -48,14 +48,13 @@ const LoginScreen = props => {
   };
 
   const VerifyUser = () => {
-    
     if (!IsLoading) {
       updateState({IsLoading: true});
       const url = URL.My_Database_Url + 'verifyuser';
 
       console.log('Into api');
-      
-      if (Email=="" || Password == '') {
+
+      if (Email == '' || Password == '') {
         updateState({IsLoading: false});
         alert('Error');
       } else {
@@ -77,7 +76,6 @@ const LoginScreen = props => {
             if (responseData.status == 200) {
               console.log(responseData.user);
               SaveUser(responseData.user);
-
               props.navigation.replace(navigationstring.BOTTOMTABHOME);
             } else {
               updateState({IsLoading: false});
@@ -112,7 +110,7 @@ const LoginScreen = props => {
               marginTop: moderateVerticalScale(15),
               flex: 1,
             }}>
-            <MyTextInput
+            <MyTextInput 
               mylabel="Email"
               placeholder="Email Address"
               autoFocus={false}
@@ -162,19 +160,18 @@ const LoginScreen = props => {
           <Text style={{color: 'orange', fontSize: 12}}>ForgetPassword?</Text>
         </TouchableOpacity>
         <View style={{flex: 1, marginVertical: moderateVerticalScale(60)}}>
-          <MyTouchableOpacity
+        <MyTouchableOpacity
             disabled={IsLoading}
             myText="Login"
             // mycss={{borderRadius: 10}}
             mymulticolor={
               IsLoading
-                ? ['#d4b561', '#d4b561', '#d4b561']
+                ? ['#e3e3e3', '#e3e3e3', '#e3e3e3']
                 : ['orange', 'orange', 'orange']
             }
+            loader={IsLoading}
             myonpress={() => {
               VerifyUser();
-             
-              
             }}
           />
         </View>

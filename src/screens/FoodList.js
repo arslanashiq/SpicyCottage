@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Text,
   Image,
+  ActivityIndicator,
   TouchableOpacity,
 } from 'react-native';
 import LottieView from 'lottie-react-native';
@@ -91,61 +92,64 @@ const FoodList = props => {
       GetFoodCategory();
     });
     // updateState({Data: []});
-  }, [apihit]);
+  }, []);
 
   const renderItem = ({item}) => <Item image={item.image} title={item.name} />;
 
   return (
-    <View style={{backgroundColor: 'white', flex: 1}}>
-      <View
-        style={{
-          backgroundColor: 'orange',
-          paddingHorizontal: moderateScale(20),
-          paddingVertical: moderateVerticalScale(5),
-          borderBottomLeftRadius: scale(10),
-          borderBottomRightRadius: scale(10),
-        }}>
-        <Header
-          Is_left_icon={false}
-          Is_header_center={true}
-          header_style={[Font.font24, {fontWeight: '700'}]}
-          header_text="Category"
-          Is_right_icon={false}
+    <>
+      {data.length == 0 ? (
+        <ActivityIndicator
+          size="large"
+          color="orange"
+          style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}
         />
-      </View>
-      {!apihit && (
-        <View>
-          <LottieView
-            loop={true}
-            autoPlay={true}
-            style={{ height: 'auto', width: 'auto'}}
-            source={imgx.Loading}
-          />
+      ) : (
+        <View style={{backgroundColor: 'white', flex: 1}}>
+          <View
+            style={{
+              backgroundColor: 'orange',
+              paddingHorizontal: moderateScale(20),
+              paddingVertical: moderateVerticalScale(5),
+              borderBottomLeftRadius: scale(10),
+              borderBottomRightRadius: scale(10),
+            }}>
+            <Header
+              Is_left_icon={false}
+              Is_header_center={true}
+              header_style={[Font.font24, {fontWeight: '700'}]}
+              header_text="Category"
+              Is_right_icon={false}
+            />
+          </View>
+          {data.length == 0 && apihit ? (
+            <View>
+              <LottieView
+                loop={true}
+                autoPlay={true}
+                style={{height: 'auto', width: 'auto'}}
+                source={imgx.NoData}
+              />
+            </View>
+          ) : (
+            <View
+              style={{
+                paddingTop: moderateVerticalScale(5),
+                paddingHorizontal: moderateScale(10),
+              }}>
+              <FlatList
+                contentContainerStyle={{
+                  paddingBottom: moderateVerticalScale(140),
+                }}
+                data={data}
+                renderItem={renderItem}
+                keyExtractor={item => item.id}
+              />
+            </View>
+          )}
         </View>
       )}
-      {data.length==0 && apihit&&<View>
-          <LottieView
-            loop={true}
-            autoPlay={true}
-            style={{ height: 'auto', width: 'auto'}}
-            source={imgx.NoData}
-          />
-        </View>}
-      {data.length >= 1 && apihit && (
-        <View
-          style={{
-            paddingTop: moderateVerticalScale(5),
-            paddingHorizontal: moderateScale(10),
-          }}>
-          <FlatList
-            contentContainerStyle={{paddingBottom: moderateVerticalScale(140)}}
-            data={data}
-            renderItem={renderItem}
-            keyExtractor={item => item.id}
-          />
-        </View>
-      )}
-    </View>
+    </>
   );
 };
 
